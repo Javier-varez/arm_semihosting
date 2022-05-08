@@ -353,10 +353,10 @@ pub fn load_extensions() -> Result<Extensions, Error> {
 }
 
 pub fn get_cmd_line() -> Result<String, Error> {
-    let mut buffer = [0u8; 80];
+    let mut buffer = [0u8; 512];
     let mut op = Operation::GetCmdLine(GetCmdLineArgs {
         ptr: &mut buffer[0] as *mut _,
-        size: 80,
+        size: 512,
     });
     call_host(&mut op)?;
 
